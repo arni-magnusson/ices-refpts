@@ -161,10 +161,3 @@ decisions <- function(x, year=NULL, iter=NULL) {
   return(res)
 }
 # }}}
-
-# boundedSegreg {{{
-boundedSegreg <- function(ab, ssb) {
-  ab$b <- ab$b + Blim
-  Segreg(ab, ssb)
-}
-# }}}
