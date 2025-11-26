@@ -43,7 +43,7 @@ srdevs <- rlnormar1(sdlog=srpars$sigmaR, rho=srpars$rho, years=seq(dy, fy),
 plot(srdevs)
 
 # BUILD FLom
-om <- FLom(stock=propagate(run, it), refpts=refpts, model='mixedsrr',
+om <- FLom(stock=propagate(run, it), refpts=refpts, model="mixedsrr",
   params=srpars, deviances=srdevs, name="sol274-ss3")
 
 # SETUP om future: average of last 3 years **
