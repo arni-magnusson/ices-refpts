@@ -6,25 +6,22 @@
 #
 # Distributed under the terms of the EUPL-1.2
 
-
+library(TAF)
+library(mse)
 source("config.R")
 source("utilities.R")
 
 mkdir("data")
 
-library(FLSRTMB)
-
 # LOAD AAP SA results, 2022 ICES WGNSSK sol.27.4
-load('bootstrap/data/sol274.rda')
+load("boot/data/sol274.rda")
 
 # - Stock-recruitment relationship(s) **
 
 # FIT models
-fits <- srrTMB(as.FLSRs(run, models=c("segreg")), 
+fits <- srrTMB(as.FLSRs(run, models=c("segreg")),
   spr0=mean(spr0y(run)[, ac(2018:2022)]))
-
 fit2 <- fmle(as.FLSR(run, model=c("segreg")))
-
 
 # PLOT
 plotsrs(fits)

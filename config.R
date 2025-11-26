@@ -6,8 +6,8 @@
 #
 # Distributed under the terms of the EUPL-1.2
 
-library(TAF)       # os.linux
-library(doFuture)  # plan
+library(TAF)  # os.linux
+library(mse)  # plan
 
 # PARALLEL setup via doFuture
 
