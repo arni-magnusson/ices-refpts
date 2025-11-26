@@ -6,6 +6,8 @@
 #
 # Distributed under the terms of the EUPL-1.2
 
+library(FLCore)  # rec, ssb, catch, landings, fbar
+
 # icesmetrics {{{
 # NAME = function ~ refpt, e.g. FMSY = fbar(om) / refpts(om)$Fmsy
 icesmetrics <- list(FMSY=fbar~Fmsy, SBMSY=ssb~Btrigger,
@@ -61,7 +63,7 @@ fullstats <- list(
     desc="ICES Risk 2, probability that spawner biomass is below Blim once"),
   # 1st year
   firstyear=list(~firstYear(iterMeans(SB/Blim > 1) >= 0.95),
-  name="recovery", desc="First year in which P(SB/SBlim) >= 0.95")
+    name="recovery", desc="First year in which P(SB/SBlim) >= 0.95")
 )
 
 icestats <- list(
@@ -93,7 +95,7 @@ icestats <- list(
     desc="ICES Risk 2, probability that spawner biomass is above Blim once"),
   # 1st year
   firstyear=list(~firstYear(iterMeans(SB/Blim > 1) >= 0.95),
-  name="recovery", desc="First year in which P(SB/SBlim) >= 0.95")
+    name="recovery", desc="First year in which P(SB/SBlim) >= 0.95")
 )
 # }}}
 
@@ -132,9 +134,9 @@ decisions <- function(x, year=NULL, iter=NULL) {
   # COMPUTE tables
   res <- lapply(year, function(y) {
     # GET advice, data and management years
-    ay  <-  an(y)
+    ay <- an(y)
     dy <- ay - args$data_lag
-    my  <- ay + args$management_lag
+    my <- ay + args$management_lag
     # EXTRACT data year metrics
     dmet <- c("SB.om", "SB.obs", "SB.est", "met.hcr")
     dmet <- c("SB.om", "SB.obs", "SB.est")
@@ -163,6 +165,6 @@ decisions <- function(x, year=NULL, iter=NULL) {
 # boundedSegreg {{{
 boundedSegreg <- function(ab, ssb) {
   ab$b <- ab$b + Blim
-  Segreg (ab, ssb)
+  Segreg(ab, ssb)
 }
 # }}}
