@@ -6,13 +6,12 @@
 #
 # Distributed under the terms of the EUPL-1.2
 
-
-library(TAF)
-library(mse)
+library(TAF)       # os.linux
+library(doFuture)  # plan
 
 # PARALLEL setup via doFuture
 
-cores <- 10
+cores <- 4
 
 if(os.linux()) {
   plan(multicore, workers=cores)
